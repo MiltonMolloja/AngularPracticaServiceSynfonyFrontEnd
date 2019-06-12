@@ -13,12 +13,12 @@ export class MensajeService {
   constructor(private _http: HttpClient) { }
 
   getEmpresas(): Observable<any> {
-    return this._http.get('http://localhost:8080/mensajeProyect/public/index.php/empresa/');
+    return this._http.get('http://localhost:8080/AngularPracticaServiceSynfony/public/index.php/empresa/');
   }
 
 
   getMensajes(): Observable<any> {
-    return this._http.get('http://localhost:8080/mensajeProyect/public/index.php/mensaje/');
+    return this._http.get('http://localhost:8080/AngularPracticaServiceSynfony/public/index.php/mensaje/');
   }
 
   public getMensajes2(): Observable<any> {
@@ -27,13 +27,13 @@ export class MensajeService {
         'Content-Type': 'application/json'
       })
     };
-    return this._http.get("http://localhost:8080/mensajeProyect/public/index.php/mensaje/",
+    return this._http.get("http://localhost:8080/AngularPracticaServiceSynfony/public/index.php/mensaje/",
       httpOption);
   }
 
   borrarMensaje(id: number){
     //utilizo el metodo delete de http que es el configurado en el deleteAction de Symfony
-    return this._http.delete(('http://localhost:8080/mensajeProyect/public/index.php/mensaje/'+id));
+    return this._http.delete(('http://localhost:8080/AngularPracticaServiceSynfony/public/index.php/mensaje/'+id));
   }
 
   public sendMensaje(mensaje){
@@ -43,7 +43,7 @@ export class MensajeService {
       })
     }
     let body = JSON.stringify(mensaje);
-    return this._http.post('http://localhost:8080/mensajeProyect/public/index.php/mensaje/new', body,
+    return this._http.post('http://localhost:8080/AngularPracticaServiceSynfony/public/index.php/mensaje/new', body,
     httpOption);
   }
 
@@ -56,7 +56,7 @@ export class MensajeService {
 
     let body = JSON.stringify(mensaje);
     //envio en el body el mensaje transformado en un JSON
-    return this._http.post('http://localhost:8080/mensajeProyect/public/index.php/mensaje/'+mensaje.id+'/edit',
+    return this._http.post('http://localhost:8080/AngularPracticaServiceSynfony/public/index.php/mensaje/'+mensaje.id+'/edit',
     body, httpOption);
   }
 
