@@ -13,6 +13,11 @@ import { Punto03Component } from './components/punto03/punto03.component';
 //  https://www.npmjs.com/package/angular-6-datatable?fbclid=IwAR01RcUK_phn72gxaaSxTBDnIJLXNG0pp98eE4nU5EhdjrlqAL4-7QG3TG0
 import {DataTableModule} from "angular-6-datatable";
 
+import {HttpClientModule} from '@angular/common/http';
+import { FormsModule } from "@angular/forms";
+import * as $ from 'jquery';
+// Validaciones Directiva
+import { Invalida, Negativo, SinEspacios } from "./validaciones.directive";
 
 
 @NgModule({
@@ -22,11 +27,16 @@ import {DataTableModule} from "angular-6-datatable";
     HeaderComponent,
     Punto01Component,
     Punto02Component,
-    Punto03Component
+    Punto03Component,
+    Invalida,
+    Negativo,
+    SinEspacios
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
+    FormsModule,
     DataTableModule
   ],
   providers: [],
