@@ -9,6 +9,10 @@ import { Punto01Component } from './components/punto01/punto01.component';
 import { Punto02Component } from './components/punto02/punto02.component';
 import { Punto03Component } from './components/punto03/punto03.component';
 
+//  Links Documentation
+//  https://www.npmjs.com/package/angular-6-datatable?fbclid=IwAR01RcUK_phn72gxaaSxTBDnIJLXNG0pp98eE4nU5EhdjrlqAL4-7QG3TG0
+import {DataTableModule} from "angular-6-datatable";
+
 
 
 @NgModule({
@@ -22,7 +26,8 @@ import { Punto03Component } from './components/punto03/punto03.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DataTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
