@@ -52,6 +52,8 @@ export class Punto02Component implements OnInit {
     )
   }
 
+
+
   public convertirMoneda(formValor: NgForm) {
     if (formValor.valid == true) {
       //this.moneda = new Moneda();
@@ -67,7 +69,7 @@ export class Punto02Component implements OnInit {
       //this.monedas.push(this.moneda);
       //console.log("antes de Ev"  + this.moneda);
       this.enviarMoneda();
-
+      this.mostrarHistoricos();
     }
   }
 
@@ -85,6 +87,13 @@ export class Punto02Component implements OnInit {
         });
   }
 
+  public elegirMoneda(moneda: Moneda) {
+    //Creo una copia del mensaje recibido como parametro para NO modificarlo
+    //ya que el parametro esta mostrandose por el binding en el datatable
+    this.moneda = Object.assign(this.moneda, moneda);
+    console.log(this.moneda);
+  }
+
   public enviarMoneda() {
     this.moneda.fecha = new Date();
     console.log(this.moneda);
@@ -97,8 +106,29 @@ export class Punto02Component implements OnInit {
           alert("Error en el envio.");
           console.log(this.moneda);
         });
+
+    this.moneda = new Moneda();
+  }
+
+
+  public borrarMoneda(id: number) {
+    this.monedaService.borrarMoneda(id).subscribe(
+      result => {
+        console.log("borrado correctamente.")
+        //actualizo la tabla de mensajes
+        this.mostrarHistoricos();
+        return true;
+      },
+      error => {
+        console.error("Error deleting!");
+        console.log(error);
+        return false;
+      }
+    )
     this.mostrarHistoricos();
     this.moneda = new Moneda();
   }
+
+
 
 }

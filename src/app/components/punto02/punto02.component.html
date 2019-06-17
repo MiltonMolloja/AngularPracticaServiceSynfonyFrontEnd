@@ -76,7 +76,7 @@
       <td>{{item.fecha.timestamp * 1000 | date: 'dd/MM/yyyy'}}</td>
       <td>
         <button type="button" class="btn btn-danger"
-        data-toggle="modal" data-target="#myModal-delet">Borrar</button>
+        data-toggle="modal" data-target="#myModal-delet" (click)="elegirMoneda(item)" >Borrar</button>
       </td>
     </tr>
   </tbody>
@@ -88,3 +88,63 @@
     </tr>
   </tfoot>
 
+ <!-- The Modal Delet -->
+ <div class="modal fade " id="form" id="myModal-delet">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Eliminar Registro: </h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body " id="form">
+        <form>
+          <div>
+            <div class="row form-group" id="desde-form">
+              <label for="name">Compra*</label>
+              <input type="text" id="compra" name="compra"
+              [(ngModel)]="moneda.compra" disabled/>
+            </div>
+
+            <div class="row form-group" id="desde-form">
+              <label for="name">Venta*</label>
+              <input type="text" id="venta" name="venta"
+              [(ngModel)]="moneda.venta" disabled/>
+            </div>
+
+            <div class="row form-group" id="desde-form">
+              <label for="name">Monto Recibido*</label>
+              <input type="text" id="montoRecibido" name="montoRecibido"
+              [(ngModel)]="moneda.montoRecibido" disabled/>
+            </div>
+
+            <div class="row form-group" id="desde-form">
+              <label for="name">Monto Entregado*</label>
+              <input type="text" id="montoEntregado" name="montoEntregado"
+              [(ngModel)]="moneda.montoEntregado" disabled/>
+            </div>
+
+            <div class="row form-group" id="desde-form">
+              <label for="name">Tipo de Cambio*</label>
+              <input type="text" id="tipoCambio" name="tipoCambio"
+              [(ngModel)]="moneda.tipoCambio" disabled/>
+            </div>
+
+            <div class="row form-group">
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <div class="col-6">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        <div class="col-6">
+            <button type="button" class="btn btn-primary" (click)="borrarMoneda(moneda.id)">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
