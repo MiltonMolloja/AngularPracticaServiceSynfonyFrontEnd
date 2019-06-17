@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Mensaje } from './../../models/mensaje';
 import { Empresa } from './../../models/empresa';
-import { MensajeService } from 'src/app/service/mensaje.service';
+import { MensajeService } from 'src/app/services/mensaje.service';
 
 
 
@@ -38,9 +38,9 @@ export class Punto01Component implements OnInit {
   public obtenerEmrpesas() {
     this.mensajeService.getEmpresas().subscribe(
       results => {
-        console.log(results['empresas']);
+        //console.log(results['empresas']);
         this.empresas = JSON.parse(results['empresas']);
-        console.log(this.empresas);
+        //console.log(this.empresas);
       }
     );
   }
@@ -52,7 +52,7 @@ export class Punto01Component implements OnInit {
       .subscribe(
         result => {
           this.mensajes = result;
-          console.log(this.mensajes);
+          //console.log(this.mensajes);
         },
         error => {
           alert("error en la peticion");
